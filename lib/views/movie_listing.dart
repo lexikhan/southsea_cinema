@@ -22,7 +22,7 @@ class OrderTicketDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('$quantity $movieName tickets: ${'🎫' * quantity}');
+    return Text('$movieName Ticket Cost: $quantity');
   }
 }
 
@@ -38,7 +38,7 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
-  int _quantity = 0;
+  int totalPrice = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -58,21 +58,31 @@ class _OrderScreenState extends State<OrderScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Spongebob Movie (2004)\n Age Rated: U \n SpongeBob takes leave from Bikini Bottom in order to track down, \n with Patrick, King Neptune's stolen crown.")
+                  Text(
+                      "Spongebob Movie (2004)\n Age Rated: U \n SpongeBob takes leave from Bikini Bottom in order to track down, \n with Patrick, King Neptune's stolen crown.")
                 ],
               ),
             ),
-            OrderTicketDisplay(_quantity, 'Spongebob Movie'),
+            OrderTicketDisplay(totalPrice, 'Spongebob Movie'),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: _increaseQuantity,
-                  child: const Text('Add'),
-                ),
-                ElevatedButton(
-                  onPressed: _decreaseQuantity,
-                  child: const Text('Remove'),
+                DropdownMenu<int>(
+                  initialSelection: 10,
+                  onSelected: (int? value) {
+                    if (value != null) {
+                      setState(() {
+                        totalPrice = value;
+                      });
+                    }
+                  },
+                  dropdownMenuEntries: [
+                    DropdownMenuEntry(value: 0, label: '0 Tickets'),
+                    DropdownMenuEntry(value: 3, label: '1 Ticket'),
+                    DropdownMenuEntry(value: 6, label: '2 Tickets'),
+                    DropdownMenuEntry(value: 9, label: '3 Tickets'),
+                    DropdownMenuEntry(value: 10, label: 'Family Ticket'),
+                  ],
                 ),
               ],
             ),
@@ -89,18 +99,7 @@ class _OrderScreenState extends State<OrderScreen> {
   }
 
   void _setQuantity() {
-    setState(() => _quantity = 0);
+    setState(() => totalPrice = 0);
   }
 
-  void _increaseQuantity() {
-    if (_quantity < widget.maxQuantity) {
-      setState(() => _quantity++);
-    }
-  }
-
-  void _decreaseQuantity() {
-    if (_quantity > 0) {
-      setState(() => _quantity--);
-    }
-  }
 }
