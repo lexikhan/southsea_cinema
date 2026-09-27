@@ -32,14 +32,5 @@ class SouthseaCinemaApp extends StatelessWidget {
   }
   
 }
-class PurchaseTicketDisplay extends StatelessWidget {
-  final String ticketType;
-  final int quantity;
 
-  PurchaseTicketDisplay(this.quantity, this.ticketType, {super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Text('This is a placeholder for PurchaseTicketDisplay');
-  }
-}
