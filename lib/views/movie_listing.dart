@@ -89,7 +89,7 @@ class _OrderScreenState extends State<OrderScreen> {
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               ElevatedButton(
                 onPressed: _changeButtonText,
-                child: const Text('Buy'),
+                child: Text(buttonText),
               )
             ])
           ],
