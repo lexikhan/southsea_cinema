@@ -38,7 +38,8 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
-  int totalPrice = 0;
+  int totalPrice = 3;
+  String buttonText = 'Buy';
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +69,7 @@ class _OrderScreenState extends State<OrderScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 DropdownMenu<int>(
-                  initialSelection: 0,
+                  initialSelection: 3,
                   onSelected: (int? value) {
                     if (value != null) {
                       setState(() {
@@ -77,7 +78,6 @@ class _OrderScreenState extends State<OrderScreen> {
                     }
                   },
                   dropdownMenuEntries: [
-                    DropdownMenuEntry(value: 0, label: '0 Tickets'),
                     DropdownMenuEntry(value: 3, label: '1 Ticket'),
                     DropdownMenuEntry(value: 6, label: '2 Tickets'),
                     DropdownMenuEntry(value: 9, label: '3 Tickets'),
@@ -88,7 +88,7 @@ class _OrderScreenState extends State<OrderScreen> {
             ),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               ElevatedButton(
-                onPressed: _setQuantity,
+                onPressed: _changeButtonText,
                 child: const Text('Buy'),
               )
             ])
@@ -98,8 +98,9 @@ class _OrderScreenState extends State<OrderScreen> {
     );
   }
 
-  void _setQuantity() {
-    setState(() => totalPrice = 0);
+  void _changeButtonText() {
+    setState(() {
+      buttonText = 'Bought';
+    });
   }
-
 }
