@@ -68,7 +68,7 @@ class _OrderScreenState extends State<OrderScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 DropdownMenu<int>(
-                  initialSelection: 10,
+                  initialSelection: 0,
                   onSelected: (int? value) {
                     if (value != null) {
                       setState(() {
