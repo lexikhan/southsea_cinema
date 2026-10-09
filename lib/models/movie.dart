@@ -8,5 +8,5 @@ class Movie{
   required this.title, 
   required this.description, 
   required this.ageRating, 
-  required this.imagePath})
+  required this.imagePath});
 }
