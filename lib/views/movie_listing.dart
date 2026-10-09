@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class MovieListing extends StatelessWidget {
   const MovieListing({super.key});
@@ -7,12 +8,19 @@ class MovieListing extends StatelessWidget {
   @override
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Southsea Cinema App',
-      home: OrderScreen(maxQuantity: 5),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(appTitle, style: cinemaHeaderStyle),
+        backgroundColor: cinemaSurface,
+        iconTheme: const IconThemeData(color: cinemaBrand),
+        elevation: 0,
+      ),
+      drawer: const NavDrawer(),
+      body: OrderScreen(),
     );
   }
 }
+
 
 class OrderTicketDisplay extends StatelessWidget {
   final String movieName;
