@@ -11,4 +11,18 @@ class Movie{
   required this.ageRating, 
   required this.imagePath,
   required this.ticketCost});
+
+  String get formattedPrice {
+  final String formattedValue = ticketCost.toStringAsFixed(2);
+  return '£$formattedValue';}
+
+  bool get isChildFriendly{
+    if(ageRating == 'U'||ageRating == 'PG'||ageRating == '12A'){
+      return true;
+    }
+    return false;
+  }
+  bool get isAdultOnly{
+    return !isChildFriendly;
+  }
 }
