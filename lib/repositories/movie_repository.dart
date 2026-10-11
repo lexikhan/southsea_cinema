@@ -7,7 +7,7 @@ class MovieRepository {
       title: 'The Spongebob Movie',
       description: 'SpongeBob takes leave from Bikini Bottom in order to track down, with Patrick, King Neptunes stolen crown.',
       ageRating: 'U',
-      imagePath: 'assets/images/SBSPMoviePoster',
+      imagePath: 'assets/images/SBSPMoviePoster.jpg',
       ticketCost: 2.5),
       Movie(id: 'minecraft',
       title: 'A Minecraft Movie',
