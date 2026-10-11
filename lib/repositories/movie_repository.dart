@@ -17,4 +17,21 @@ class MovieRepository {
       ticketCost: 4.25),
     ];
   }
+    Movie? getMovieById(String id) {
+    for (final movie in getMovies()) {
+      if (movie.id == id) {
+        return movie;
+      }
+    }
+    return null;
+  }
+  List<Movie> getMoviesByAgeRating(String agerate){
+    List<Movie> list = [];
+    for (final movie in getMovies()) {
+      if (movie.ageRating == agerate) {
+        list.add(movie);
+      }
+    }
+    return list;
+  }
 }
