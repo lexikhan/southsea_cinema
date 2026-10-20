@@ -1,43 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
+import 'package:southsea_cinema/models/movie.dart';
 
-class MovieListing extends StatelessWidget {
-  const MovieListing({super.key});
 
-  @override
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(appTitle, style: cinemaHeaderStyle),
-        backgroundColor: cinemaSurface,
-        iconTheme: const IconThemeData(color: cinemaBrand),
-        elevation: 0,
-      ),
-      drawer: const NavDrawer(),
-      body: OrderScreen(),
-    );
-  }
-}
 
 
 class OrderTicketDisplay extends StatelessWidget {
-  final String movieName;
-  final int quantity;
+  final Movie movie;
+  final double quantity;
 
-  const OrderTicketDisplay(this.quantity, this.movieName, {super.key});
+  const OrderTicketDisplay(this.quantity, this.movie, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Text('$movieName Ticket Cost: $quantity');
+    return Text('${movie.title} Ticket Cost: $quantity');
   }
 }
 
 class OrderScreen extends StatefulWidget {
-  final int maxQuantity;
+  final Movie movie;
 
-  const OrderScreen({super.key, this.maxQuantity = 10});
+  const OrderScreen(this.movie, {super.key});
 
   @override
   State<OrderScreen> createState() {
@@ -46,7 +30,7 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
-  int totalPrice = 3;
+  double totalPrice = 0;
   String buttonText = 'Buy';
 
   @override
@@ -68,28 +52,28 @@ class _OrderScreenState extends State<OrderScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                      "Spongebob Movie (2004)\n Age Rated: U \n SpongeBob takes leave from Bikini Bottom in order to track down, \n with Patrick, King Neptune's stolen crown.")
+                      "${widget.movie.title}\n Age Rated: ${widget.movie.ageRating} \n ${widget.movie.description}")
                 ],
               ),
             ),
-            OrderTicketDisplay(totalPrice, 'Spongebob Movie'),
+            OrderTicketDisplay(totalPrice, widget.movie),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 DropdownMenu<int>(
-                  initialSelection: 3,
+                  initialSelection: 1,
                   onSelected: (int? value) {
                     if (value != null) {
                       setState(() {
-                        totalPrice = value;
+                        totalPrice = value*widget.movie.ticketCost;
                       });
                     }
                   },
                   dropdownMenuEntries: [
-                    DropdownMenuEntry(value: 3, label: '1 Ticket'),
-                    DropdownMenuEntry(value: 6, label: '2 Tickets'),
-                    DropdownMenuEntry(value: 9, label: '3 Tickets'),
-                    DropdownMenuEntry(value: 10, label: 'Family Ticket'),
+                    DropdownMenuEntry(value: 1, label: '1 Ticket '),
+                    DropdownMenuEntry(value: 2, label: '2 Tickets'),
+                    DropdownMenuEntry(value: 3, label: '3 Tickets'),
+                    DropdownMenuEntry(value: 4, label: 'Family Ticket'),
                   ],
                 ),
               ],

@@ -13,13 +13,13 @@ class TicketScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Tickets'),
+          title: Text('Welcome To outhsea Cinema', style: TextStyle(color: Colors.white))
         ),
         body: ListView.builder(
           itemCount: movies.length,
           itemBuilder: ((context, index) {
             return MovieCard(movie: movies[index]);
-          }),
-        ));
+          }),)
+        );
   }
 }
