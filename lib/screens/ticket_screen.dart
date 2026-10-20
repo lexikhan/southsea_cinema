@@ -13,7 +13,7 @@ class TicketScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text('Welcome To outhsea Cinema', style: TextStyle(color: Colors.white))
+          title: Text('Welcome To Southsea Cinema', style: TextStyle(color: Colors.white))
         ),
         body: ListView.builder(
           itemCount: movies.length,
