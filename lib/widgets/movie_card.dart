@@ -31,6 +31,7 @@ class MovieCard extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
+                            color: Colors.black
                           ),
                         ),
                         const SizedBox(height: 8),
