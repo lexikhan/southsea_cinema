@@ -63,7 +63,7 @@ class _OrderScreenState extends State<OrderScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 DropdownMenu<int>(
-                  initialSelection: 1,
+                  initialSelection: 0,
                   onSelected: (int? value) {
                     if (value != null) {
                       setState(() {
@@ -72,6 +72,7 @@ class _OrderScreenState extends State<OrderScreen> {
                     }
                   },
                   dropdownMenuEntries: [
+                    DropdownMenuEntry(value: 0, label: 'No Ticket'),
                     DropdownMenuEntry(value: 1, label: '1 Ticket '),
                     DropdownMenuEntry(value: 2, label: '2 Tickets'),
                     DropdownMenuEntry(value: 3, label: '3 Tickets'),
