@@ -3,9 +3,6 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/models/movie.dart';
 
-
-
-
 class OrderTicketDisplay extends StatelessWidget {
   final Movie movie;
   final double quantity;
@@ -47,12 +44,17 @@ class _OrderScreenState extends State<OrderScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              color: Colors.red,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                      "${widget.movie.title}\n Age Rated: ${widget.movie.ageRating} \n ${widget.movie.description}")
+                  Image.asset(
+                    widget.movie.imagePath,
+                    width: 68,
+                    height: 101,
+                    fit: BoxFit.cover,
+                  ),
+                  Flexible(child: Text(
+                      "${widget.movie.title}\n Age Rated: ${widget.movie.ageRating} \n ${widget.movie.description}"))
                 ],
               ),
             ),
@@ -65,7 +67,7 @@ class _OrderScreenState extends State<OrderScreen> {
                   onSelected: (int? value) {
                     if (value != null) {
                       setState(() {
-                        totalPrice = value*widget.movie.ticketCost;
+                        totalPrice = value * widget.movie.ticketCost;
                       });
                     }
                   },
