@@ -33,6 +33,27 @@ void main() {
         imagePath: 'assets/images/coolFilm.jpeg',
       );
       expect(movie.formattedPrice, "£5.25");
+    });
+    test('test IschildFriendly', () {
+      Movie movie = Movie(
+        id: 'testMovie',
+        title: 'Test Movie',
+        description: 'Very cool, probaably has Tom Holland or Zendaya or Both',
+        ticketCost: 5.25,
+        ageRating: 'U',
+        imagePath: 'assets/images/coolFilm.jpeg',
+      );
+      expect(movie.isChildFriendly, true);
   });
-});
-}
+    test('test IsAdult', () {
+      Movie movie = Movie(
+        id: 'testMovie',
+        title: 'Test Movie',
+        description: 'Very cool, probaably has Tom Holland or Zendaya or Both',
+        ticketCost: 5.25,
+        ageRating: '18',
+        imagePath: 'assets/images/coolFilm.jpeg',
+      );
+      expect(movie.isAdultOnly, true);
+    });
+  });}
