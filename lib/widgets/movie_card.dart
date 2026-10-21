@@ -47,6 +47,7 @@ class MovieCard extends StatelessWidget {
                               style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.black
                               ),
                             ),
                             ElevatedButton(
