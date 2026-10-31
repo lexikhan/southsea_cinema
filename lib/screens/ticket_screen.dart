@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/repositories/movie_repository.dart';
+import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
+import 'package:southsea_cinema/screens/basket_screen.dart';
+import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/widgets/basket_button.dart';
 
 class TicketScreen extends StatelessWidget {
   const TicketScreen({super.key});
@@ -13,13 +17,17 @@ class TicketScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text('Welcome To Southsea Cinema', style: TextStyle(color: Colors.white))
+          title: const Text(appTitle, style: TextStyle(color: Colors.white)),
+          actions: [const BasketButton()],
         ),
+        drawer: NavDrawer(),
         body: ListView.builder(
           itemCount: movies.length,
           itemBuilder: ((context, index) {
             return MovieCard(movie: movies[index]);
           }),)
+        
         );
+        
   }
 }
