@@ -90,24 +90,20 @@ class _OrderScreenState extends State<OrderScreen> {
               ],
             ),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              ElevatedButton(
-                onPressed: _changeButtonText,
-                child: Text(buttonText),
-              )
-            ]),
-            const SizedBox(height: 24),
-            SizedBox(
-              width: double.infinity,
-              child: PrimaryButton(
-                label: 'Add to Basket',
-                onPressed: _addToBasket,
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                child: PrimaryButton(
+                  label: 'Add to Basket',
+                  onPressed: _addToBasket,
+                ),
               ),
-            ),
-            const SizedBox(height: 12),
-            Text(
-              _confirmationMessage,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
+              const SizedBox(height: 12),
+              Text(
+                _confirmationMessage,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ]),
           ],
         ),
       ),
