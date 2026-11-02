@@ -52,7 +52,7 @@ class MovieCard extends StatelessWidget {
                               ),
                             ),
                             PrimaryButton(
-                              label: 'order',
+                              label: 'Order',
                               onPressed: () {
                                 Navigator.push(
                                   context,

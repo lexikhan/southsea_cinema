@@ -35,6 +35,7 @@ class _OrderScreenState extends State<OrderScreen> {
   double totalPrice = 0;
   String buttonText = 'Buy';
   String _confirmationMessage = '';
+  double quantity = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -46,87 +47,72 @@ class _OrderScreenState extends State<OrderScreen> {
         iconTheme: const IconThemeData(color: cinemaBrand),
         elevation: 0,
       ),
-      body: Center(
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    widget.movie.imagePath,
-                    width: 68,
-                    height: 101,
-                    fit: BoxFit.cover,
-                  ),
-                  Flexible(
-                      child: Text(
-                          "${widget.movie.title}\n Age Rated: ${widget.movie.ageRating} \n ${widget.movie.description}"))
-                ],
-              ),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Order ${widget.movie.title}',
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
-            OrderTicketDisplay(totalPrice, widget.movie),
+            const SizedBox(height: 16),
+            OrderTicketDisplay(quantity, widget.movie),
+            const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                DropdownMenu<int>(
-                  initialSelection: 0,
-                  onSelected: (int? value) {
-                    if (value != null) {
-                      setState(() {
-                        totalPrice = value * widget.movie.ticketCost;
-                      });
-                    }
-                  },
-                  dropdownMenuEntries: [
-                    DropdownMenuEntry(value: 0, label: 'No Ticket'),
-                    DropdownMenuEntry(value: 1, label: '1 Ticket '),
-                    DropdownMenuEntry(value: 2, label: '2 Tickets'),
-                    DropdownMenuEntry(value: 3, label: '3 Tickets'),
-                    DropdownMenuEntry(value: 4, label: 'Family Ticket'),
-                  ],
+                ElevatedButton(
+                  onPressed: _decreaseQuantity,
+                  child: const Text('Remove'),
+                ),
+                const SizedBox(width: 12),
+                ElevatedButton(
+                  onPressed: _increaseQuantity,
+                  child: const Text('Add'),
                 ),
               ],
             ),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              const SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity,
-                child: PrimaryButton(
-                  label: 'Add to Basket',
-                  onPressed: _addToBasket,
-                ),
+            const SizedBox(height: 24),
+            SizedBox(
+              width: double.infinity,
+              child: PrimaryButton(
+                label: 'Add to Basket',
+                onPressed: _addToBasket,
               ),
-              const SizedBox(height: 12),
-              Text(
-                _confirmationMessage,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ]),
+            ),
+            const SizedBox(height: 12),
+            Text(
+              _confirmationMessage,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
           ],
         ),
-      ),
-    );
+      ));
   }
 
-  void _changeButtonText() {
+  void _increaseQuantity() {
     setState(() {
-      buttonText = 'Bought';
+      quantity = quantity + 1;
+    });
+  }
+  void _decreaseQuantity() {
+    setState(() {
+      quantity = quantity - 1;
     });
   }
 
   void _addToBasket() {
-    double _quantity = totalPrice / widget.movie.ticketCost;
-    if (_quantity > 0) {
+    
+    if (quantity > 0) {
       final CartItem item = CartItem(
         movie: widget.movie,
-        quantity: _quantity.toInt(),
+        quantity: quantity.toInt(),
       );
       CartRepository.instance.addItem(item);
       setState(() {
         _confirmationMessage =
-            'Added $_quantity ${widget.movie.title} to basket';
+            'Added $quantity ${widget.movie.title} to basket';
       });
     } else {
       setState(() {
