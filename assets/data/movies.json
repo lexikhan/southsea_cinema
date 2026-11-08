@@ -16,11 +16,19 @@
         "ticketCost": 4.25
     },
     {
+        "id": "starwars",
+        "title": "Star Wars: A New Hope",
+        "description": "Youve watched star wars",
+        "ageRating": "PG",
+        "imagePath": "assets/images/SWMoviePoster.jpg",
+        "ticketCost": 0.5
+    },
+    {
         "id": "nonexistant",
         "title": "Not Real",
         "description": "DO NOT ORDER",
         "ageRating": "N/A",
         "imagePath": "assets/images/EMTMoviePoster.jpg",
-        "ticketCost": 0
+        "ticketCost": 0.5
     }
 ]

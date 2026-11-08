@@ -22,6 +22,17 @@ class MovieCard extends StatelessWidget {
                     width: 68,
                     height: 101,
                     fit: BoxFit.cover,
+                    errorBuilder: (
+                      BuildContext context,
+                      Object error,
+                      StackTrace? stackTrace,
+                    ) {
+                      return const SizedBox(
+                        width: 80,
+                        height: 80,
+                        child: Center(child: Text('Image unavailable')),
+                      );
+                    },
                   ),
                   Expanded(
                     child: Column(
@@ -30,10 +41,9 @@ class MovieCard extends StatelessWidget {
                         Text(
                           movie.title,
                           style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black
-                          ),
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
                         ),
                         const SizedBox(height: 8),
                         Text(
@@ -46,10 +56,9 @@ class MovieCard extends StatelessWidget {
                             Text(
                               '£${movie.ticketCost.toStringAsFixed(2)}',
                               style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black
-                              ),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
                             ),
                             PrimaryButton(
                               label: 'Order',
@@ -63,7 +72,6 @@ class MovieCard extends StatelessWidget {
                                   ),
                                 );
                               },
-                              
                             ),
                           ],
                         ),
