@@ -16,7 +16,7 @@ class OrderTicketDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('${movie.title} Ticket Cost: $_quantity');
+    return Text('${movie.title} Ticket Cost: ${_quantity*movie.ticketCost}');
   }
 }
 
