@@ -21,6 +21,6 @@
         "description": "DO NOT ORDER",
         "ageRating": "N/A",
         "imagePath": "assets/images/EMTMoviePoster.jpg",
-        "ticketCost": 1.5
+        "ticketCost": 0
     }
 ]
