@@ -1,16 +1,26 @@
-{
-    "id": "spongebob",
-      "title": "The Spongebob Movie",
-      "description": "SpongeBob takes leave from Bikini Bottom in order to track down, with Patrick, King Neptunes stolen crown.",
-      "ageRating": "U",
-      "imagePath": "assets/images/SBSPMoviePoster.jpg",
-      "ticketCost": 2.5
-}
-{
-    "id": "minecraft",
-      "title": "A Minecraft Movie",
-      "description": "Four misfits are suddenly pulled through a mysterious portal into a bizarre cubic wonderland that thrives on imagination. To get back home theyll have to master this world while embarking on a quest with an unexpected expert crafter.",
-      "ageRating": "PG",
-      "imagePath": "assets/images/MCMoviePoster.jpg",
-      "ticketCost": 4.25
-}
+[
+    {
+        "id": "spongebob",
+        "title": "The Spongebob Movie",
+        "description": "SpongeBob takes leave from Bikini Bottom in order to track down, with Patrick, King Neptunes stolen crown.",
+        "ageRating": "U",
+        "imagePath": "assets/images/SBSPMoviePoster.jpg",
+        "ticketCost": 2.5
+    },
+    {
+        "id": "minecraft",
+        "title": "A Minecraft Movie",
+        "description": "Four misfits are suddenly pulled through a mysterious portal into a bizarre cubic wonderland that thrives on imagination. To get back home theyll have to master this world while embarking on a quest with an unexpected expert crafter.",
+        "ageRating": "PG",
+        "imagePath": "assets/images/MCMoviePoster.jpg",
+        "ticketCost": 4.25
+    },
+    {
+        "id": "nonexistant",
+        "title": "Not Real",
+        "description": "DO NOT ORDER",
+        "ageRating": "N/A",
+        "imagePath": "assets/images/EMTMoviePoster.jpg",
+        "ticketCost": 1.5
+    }
+]

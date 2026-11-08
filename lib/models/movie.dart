@@ -28,4 +28,33 @@ class Movie {
   bool get isAdultOnly {
     return !isChildFriendly;
   }
+
+  factory Movie.fromJson(Map<String, dynamic> json) {
+    final String id = json['id'] as String;
+    final String title = json['title'] as String;
+    final String description = json['description'] as String;
+    final num priceNumber = json['price'] as num;
+    final double price = priceNumber.toDouble();
+    final String imagePath = json['imagePath'] as String;
+    final String ageRating = json['ageRating'] as String;
+    return Movie(
+      id: id,
+      title: title,
+      description: description,
+      ticketCost: price,
+      ageRating: ageRating,
+      imagePath: imagePath,
+    );
+  }
+   Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{
+      'id': id,
+      'title': title,
+      'description': description,
+      'ticketCost': ticketCost,
+      'ageRating': ageRating,
+      'imagePath': imagePath,
+    };
+    return data;
+  }
 }
