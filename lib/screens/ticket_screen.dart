@@ -6,6 +6,7 @@ import 'package:southsea_cinema/widgets/movie_card.dart';
 import 'package:southsea_cinema/screens/basket_screen.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
+import 'package:southsea_cinema/widgets/settings_button.dart';
 
 class TicketScreen extends StatelessWidget {
   const TicketScreen({super.key});
@@ -18,7 +19,7 @@ class TicketScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text(appTitle, style: TextStyle(color: Colors.white)),
-          actions: [const BasketButton()],
+          actions: [SettingsButton(), BasketButton()],
         ),
         drawer: NavDrawer(),
         body: ListView.builder(

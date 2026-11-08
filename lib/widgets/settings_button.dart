@@ -8,6 +8,24 @@ class SettingsButton extends StatelessWidget {
     return IconButton(
         icon: const Icon(Icons.person_outline),
         tooltip: 'Settings',
-        onPressed: () {});
+        onPressed: () {
+          final ModalRoute<dynamic>? modalRoute = ModalRoute.of(context);
+          final String currentRoute;
+          if (modalRoute != null) {
+            final RouteSettings routeSettings = modalRoute.settings;
+            final String? name = routeSettings.name;
+            if (name != null) {
+              currentRoute = name;
+            } else {
+              currentRoute = '';
+            }
+          } else {
+            currentRoute = '';
+          }
+
+          if (currentRoute != '/settings') {
+            Navigator.pushNamed(context, '/settings');
+          }
+        });
   }
 }
