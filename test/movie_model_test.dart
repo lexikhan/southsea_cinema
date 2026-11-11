@@ -64,7 +64,7 @@ void main() {
         'imagePath': 'assets/images/coolFilm.jpeg',
       };
       Movie movie = Movie.fromJson(data);
-      expect(movie.id, 'testmovie');
+      expect(movie.id, 'testMovie');
       expect(movie.title, 'Test Movie');
       expect(movie.description,
           'Very cool, probaably has Tom Holland or Zendaya or Both');
