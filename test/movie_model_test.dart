@@ -14,14 +14,11 @@ void main() {
       );
       expect(movie.id, 'testMovie');
       expect(movie.title, 'Test Movie');
-      expect(movie.description, 'Very cool, probaably has Tom Holland or Zendaya or Both');
+      expect(movie.description,
+          'Very cool, probaably has Tom Holland or Zendaya or Both');
       expect(movie.ticketCost, 5.25);
       expect(movie.ageRating, '18');
       expect(movie.imagePath, 'assets/images/coolFilm.jpeg');
-
-
-      
-      
     });
     test('test formattedPrice', () {
       Movie movie = Movie(
@@ -44,7 +41,7 @@ void main() {
         imagePath: 'assets/images/coolFilm.jpeg',
       );
       expect(movie.isChildFriendly, true);
-  });
+    });
     test('test IsAdult', () {
       Movie movie = Movie(
         id: 'testMovie',
@@ -56,4 +53,24 @@ void main() {
       );
       expect(movie.isAdultOnly, true);
     });
-  });}
+    test('test Json Conversions', () {
+      final Map<String, dynamic> data = <String, dynamic>{
+        'id': 'testMovie',
+        'title': 'Test Movie',
+        'description':
+            'Very cool, probaably has Tom Holland or Zendaya or Both',
+        'ticketCost': 5.25,
+        'ageRating': '18',
+        'imagePath': 'assets/images/coolFilm.jpeg',
+      };
+      Movie movie = Movie.fromJson(data);
+      expect(movie.id, 'testmovie');
+      expect(movie.title, 'Test Movie');
+      expect(movie.description,
+          'Very cool, probaably has Tom Holland or Zendaya or Both');
+      expect(movie.ticketCost, 5.25);
+      expect(movie.ageRating, '18');
+      expect(movie.imagePath, 'assets/images/coolFilm.jpeg');
+    });
+  });
+}
